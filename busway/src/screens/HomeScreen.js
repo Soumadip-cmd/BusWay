@@ -1,11 +1,37 @@
-import { StyleSheet, Text, View,Dimensions } from 'react-native'
+import { StyleSheet, Text, View,Dimensions,ScrollView, StatusBar } from 'react-native'
 import React from 'react'
+import { StatusBar } from 'react-native'
 import { colors ,parameters} from '../../src/global/style'
+import {Icon} from 'react-native-vector-icons'
 const SCREEN_WIDTH=Dimensions.get('window').width
 const HomeScreen = () => {
   return (
     <View style={styles.conatiner}>
-      <Text>Hello Home Screen</Text>
+      <View style={styles.header}>
+        <View tyle={styles.icon1}>
+        <Icon type="material-community"
+        name="menu"
+        color={colors.white}
+        size={40}
+        />
+        </View>
+      </View>
+      <ScrollView bounces={false}>
+        <View style={styles.home}>
+            <Text style={styles.text1}> Destress Your Commute</Text>
+            <View style={styles.view1}>
+                <View style={styles.view8}>
+                    <Text style={styles.text2}>Read a book.Take a nap.Stare out of the window</Text>
+                    <View style={styles.button1}>
+                        <Text styles={styles.button1}>Ride with BusWay</Text>
+                    </View>
+                </View>
+            </View>
+        </View>
+      </ScrollView>
+      <StatusBar style="light" backgroundColor="#2058c0"
+        translucent={true}
+       />
     </View>
   )
 }
@@ -160,7 +186,7 @@ const styles = StyleSheet.create({
       },
       header:{
         backgroundColor:colors.blue,
-        paddingTop:parameters.statusBarHeight,
+        
         height:parameters.headerHeight,
         alignItems:'flex-start'
       }
