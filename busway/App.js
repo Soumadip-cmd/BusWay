@@ -14,7 +14,7 @@ const App = () => {
 export default App
 
 const styles = StyleSheet.create({
-conatiner:{
+  conatiner:{
   flex:1
 }
 })

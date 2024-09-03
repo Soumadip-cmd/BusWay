@@ -1,12 +1,14 @@
-import { StyleSheet, Text, View,Dimensions,ScrollView, StatusBar } from 'react-native'
+import { StyleSheet, Text, View,Dimensions,ScrollView, Image ,FlatList} from 'react-native'
 import React from 'react'
 import { StatusBar } from 'react-native'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import { colors ,parameters} from '../../src/global/style'
-import {Icon} from 'react-native-vector-icons'
+
+import { filterData } from '../global/data'
 const SCREEN_WIDTH=Dimensions.get('window').width
 const HomeScreen = () => {
   return (
-    <View style={styles.conatiner}>
+    <View style={styles.conatainer}>
       <View style={styles.header}>
         <View tyle={styles.icon1}>
         <Icon type="material-community"
@@ -23,11 +25,58 @@ const HomeScreen = () => {
                 <View style={styles.view8}>
                     <Text style={styles.text2}>Read a book.Take a nap.Stare out of the window</Text>
                     <View style={styles.button1}>
-                        <Text styles={styles.button1}>Ride with BusWay</Text>
+                        <Text style={styles.buttonText}>Ride with BusWay</Text>
                     </View>
                 </View>
+                <View>
+                    <Image
+                    style={styles.image1}
+                    source={require('../../assets/uberCar.png')}
+                    
+                    />
+                </View>
             </View>
+          
         </View>
+        <View>
+                <FlatList
+                numRows={4}
+                horizontal={true}
+                showsHorizontalScrollIndicator={false}
+                data={filterData}
+                keyExtractor={(item)=>item.id}
+                renderItem={({item})=>(
+                    <View style={styles.card}>
+                     <View style={styles.view2}>
+                        <Image style={styles.image2}
+                        source={item.image}/>
+                         </View>
+                        <View>
+                            <Text style={styles.title}>
+                                {item.name}
+                            </Text>
+                            </View>
+                    </View>
+                )}
+                />
+            </View>
+            <View style={styles.view3}>
+                    <Text>Where to?</Text>
+                    <View style={styles.view4}>
+
+                      <Icon type="material-community"
+                          name="clock-time-four"
+                          color={colors.grey1}
+                          size={26}
+                      />
+                      <Text style={{marginLeft:5}}>Now</Text>
+                      <Icon type="material-community"
+                          name="chevron-down"
+                          color={colors.grey1}
+                          size={26}
+                      />
+                    </View>
+            </View>
       </ScrollView>
       <StatusBar style="light" backgroundColor="#2058c0"
         translucent={true}
@@ -178,7 +227,7 @@ const styles = StyleSheet.create({
         height:10,
         width:100
       },
-      conatiner:{
+      conatainer:{
         flex:1,
         backgroundColor:colors.white,
         paddingBottom:30,
