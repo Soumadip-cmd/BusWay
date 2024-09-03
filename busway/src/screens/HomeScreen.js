@@ -61,7 +61,7 @@ const HomeScreen = () => {
                 />
             </View>
             <View style={styles.view3}>
-                    <Text>Where to?</Text>
+                    <Text style={styles.text3}>Where to?</Text>
                     <View style={styles.view4}>
 
                       <Icon type="material-community"
@@ -77,7 +77,16 @@ const HomeScreen = () => {
                       />
                     </View>
             </View>
+            <View style={styles.view5}
+
+            >
+                <View style={styles.view6}>
+
+                </View>
+
+            </View>
       </ScrollView>
+
       <StatusBar style="light" backgroundColor="#2058c0"
         translucent={true}
        />
@@ -241,3 +250,4 @@ const styles = StyleSheet.create({
       }
       
 })
+
