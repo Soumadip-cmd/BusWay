@@ -147,6 +147,10 @@ const styles = StyleSheet.create({
         alignItems:"center",
         justifyContent:"center"
       },
+      title:{
+        color:colors.black,
+        fontSize:16
+      },
       view9:{
         width:4,
         height:4,
@@ -271,7 +275,10 @@ const styles = StyleSheet.create({
       },
       image2:{
         backgroundColor:colors.blue,
-        paddingLeft:20
+        paddingLeft:20,
+        height:60,
+        width:60,
+         borderRadius:30
       },
       image1:{
         height:100,
@@ -280,14 +287,15 @@ const styles = StyleSheet.create({
       conatainer:{
         flex:1,
         backgroundColor:colors.white,
-        paddingBottom:30,
+        paddingBottom:40,
         paddingTop:parameters.statusBarHeight
       },
       header:{
         backgroundColor:colors.blue,
-        
         height:parameters.headerHeight,
-        alignItems:'flex-start'
+      alignItems:"flex-start"
+        
+       
       }
       
 })
