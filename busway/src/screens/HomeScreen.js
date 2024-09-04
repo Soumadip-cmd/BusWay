@@ -11,6 +11,8 @@ import React from "react";
 import { StatusBar } from "react-native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { colors, parameters } from "../../src/global/style";
+import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
+import { mapStyle } from "../global/mapStyle";
 
 import { filterData } from "../global/data";
 const SCREEN_WIDTH = Dimensions.get("window").width;
@@ -141,6 +143,16 @@ const HomeScreen = () => {
             />
           </View>
         </View>
+        <Text style={styles.text4}>Around You</Text>
+        <View style={{ alignItems: "center", justifyContent: "center" }}>
+          <MapView
+            provider={PROVIDER_GOOGLE}
+            style={styles.map}
+            customMapStyle={mapStyle}
+            showsUserLocation={true}
+            followsUserLocation={true}
+          ></MapView>
+        </View>
       </ScrollView>
 
       <StatusBar style="light" backgroundColor="#2058c0" translucent={true} />
@@ -251,7 +263,9 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: colors.white,
-    fontSize: 17,
+    fontSize: 15,
+    padding: 2,
+
     marginTop: -2,
   },
   button1: {

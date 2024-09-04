@@ -12,12 +12,26 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "package":"com.busway",
+      "config":{
+        "googleMaps":{
+          "apikey":"AIzaSyBKwonFKAZOjQ873pqr167gdjyhdAqrri0"
+        },
+        "permission":["ACCESS_COARSE_LOCATION","ACCESS_FINE_LOCATION","FOREGROUND_SERVICE"]
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
+      },
+      "package":"com.busway",
+      "config":{
+        "googleMaps":{
+          "apikey":"AIzaSyBKwonFKAZOjQ873pqr167gdjyhdAqrri0"
+        },
+        "permission":["ACCESS_COARSE_LOCATION","ACCESS_FINE_LOCATION","FOREGROUND_SERVICE"]
       }
     },
     "web": {
