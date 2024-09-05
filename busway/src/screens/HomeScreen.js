@@ -7,16 +7,52 @@ import {
   Image,
   FlatList,
 } from "react-native";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { StatusBar } from "react-native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { colors, parameters } from "../../src/global/style";
 import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
 import { mapStyle } from "../global/mapStyle";
+import * as Location from "expo-location";
 
 import { filterData } from "../global/data";
 const SCREEN_WIDTH = Dimensions.get("window").width;
 const HomeScreen = () => {
+  const [latlng, setLatlng] = useState({});
+
+  const checkPermission = async () => {
+    const hasPermission = await Location.requestForegroundPermissionsAsync();
+    if (hasPermission === "granted") {
+      const permission = await askPermission();
+      return permission;
+    }
+    return true;
+  };
+
+  const askPermission = async () => {
+    const permission = await location.requestForegroundPermissionsAsync();
+    return permission.status === "granted";
+  };
+
+  const getLocation = async () => {
+    try {
+      const { granted } = await Location.requestForegroundPermissionsAsync();
+      if (!granted) return;
+      const {
+        coords: { latitude, longitude },
+      } = await Location.getCurrentPositionAsync();
+      setLatlng({ latitude: latitude, longitude: longitude });
+    } catch (error) {}
+  };
+
+  useEffect(() => {
+    checkPermission();
+    getLocation();
+    // console.log(latlng) ,
+     [];
+  });
+
+  const _map = useRef(1);
   return (
     <View style={styles.conatainer}>
       <View style={styles.header}>
@@ -146,11 +182,15 @@ const HomeScreen = () => {
         <Text style={styles.text4}>Around You</Text>
         <View style={{ alignItems: "center", justifyContent: "center" }}>
           <MapView
+            ref={_map}
             provider={PROVIDER_GOOGLE}
             style={styles.map}
             customMapStyle={mapStyle}
             showsUserLocation={true}
             followsUserLocation={true}
+            rotateEnabled={true}
+            zoomEnabled={true}
+            toolbarEnabled={true}
           ></MapView>
         </View>
       </ScrollView>
