@@ -14,7 +14,7 @@ import { colors, parameters } from "../../src/global/style";
 import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
 import { mapStyle } from "../global/mapStyle";
 import * as Location from "expo-location";
-
+import { carsAround } from "../global/data";
 import { filterData } from "../global/data";
 const SCREEN_WIDTH = Dimensions.get("window").width;
 const HomeScreen = () => {
@@ -191,7 +191,23 @@ const HomeScreen = () => {
             rotateEnabled={true}
             zoomEnabled={true}
             toolbarEnabled={true}
-          ></MapView>
+          >
+          {
+            carsAround.map((item,index)=>{
+              <MapView.Marker coordinate={item}
+              key={index.toString()}
+              >
+                <Image
+                   source={require('../../assets/carMarker.png')}
+                   style={styles.carsAround}
+                   resizeMode="cover"
+                />
+
+              </MapView.Marker>
+            })
+          }
+          
+          </MapView>
         </View>
       </ScrollView>
 
